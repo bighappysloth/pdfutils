@@ -33,6 +33,7 @@ merge_parser.add_argument('-add_blank_page_after_subfile', '-add_blank', action=
 toc_parser.add_argument('-input', type=pathlib.Path, nargs=1, required=True, help='Input PDF path, required')
 toc_parser.add_argument('-config', type=pathlib.Path, nargs=1, required=True, help='Input config path, required')
 toc_parser.add_argument('-output', type=pathlib.Path, nargs=1, required=False, help='Output file path (optional)')
+toc_parser.add_argument('-offset', type=int,required=False,help ='Offset by Positive number of pages')
 
 
 # Margin Parser Arguments
@@ -171,6 +172,9 @@ if __name__ == '__main__':
 		# Read the config file. Separate by lines
 		with args.config[0].open() as f:
 			lines = f.read().splitlines()
+			offset = 0
+			if args.offset:
+				offset = int(args.offset)
 			for i in range(0,len(lines)):
 				
 				temp = lines[i]
@@ -179,7 +183,7 @@ if __name__ == '__main__':
 				temp_indent_level = len(lines[i][0])-len(lines[i][0].lstrip())
 				lines[i][0]=lines[i][0].lstrip()
 				lines[i].append(temp_indent_level)
-				lines[i]={'pagenum': int(lines[i][0]), 'title': str(lines[i][1]),'indent_level': int(lines[i][-1])}
+				lines[i]={'pagenum': int(lines[i][0])+offset, 'title': str(lines[i][1]),'indent_level': int(lines[i][-1])}
 				
 				# {'pagenum': 1, 'title': 'Chapter 1', 'indent_level': 0}
 				# {'pagenum': 4, 'title': 'Chapter 1.1', 'indent_level': 1}

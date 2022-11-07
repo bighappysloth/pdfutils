@@ -1,0 +1,130 @@
+Contents
+Foreword v
+Introduction xv
+Chapter 1. Preliminaries to Complex Analysis 1
+1. Complex numbers and the complex plane 1
+    1.1.1 Basic properties 1
+    1.1.2 Convergence 5
+    1.1.3 Sets in the complex plane 5
+1.2 Functions on the complex plane 8
+    1.2.1 Continuous functions 8
+    1.2.2 Holomorphic functions 8
+    1.2.3 Power series 14
+1.3 Integration along curves 18
+1.4Exercises24
+Chapter 2. Cauchy’s Theorem and Its Applications 32
+1 Goursat’s theorem 34
+2 Local existence of primitives and Cauchy’s theorem in a
+disc 37
+3 Evaluation of some integrals 41
+4 Cauchy’s integral formulas 45
+5 Further applications 53
+5.1 Morera’s theorem 53
+5.2 Sequences of holomorphic functions 53
+5.3 Holomorphic functions deﬁned in terms of integrals 55
+5.4 Schwarz reﬂection principle 57
+5.5 Runge’s approximation theorem 60
+6Exercises64
+7P r o b l e m s 67
+
+Chapter 3. Meromorphic Functions and the Logarithm 71
+1 Zeros and poles 72
+2 The residue formula 76
+2.1 Examples 77
+3 Singularities and meromorphic functions 83
+4 The argument principle and applications 89
+
+5 Homotopies and simply connected domains 93
+6 The complex logarithm 97
+7 Fourier series and harmonic functions 101
+8 Exercises103
+9 Problems 108
+Chapter 4. The Fourier Transform 111
+1T h e c l a s s F 113
+2 Action of the Fourier transform on F 114
+3 Paley-Wiener theorem 121
+4 Exercises127
+5 Problems 131
+Chapter 5. Entire Functions 134
+1 Jensen’s formula 135
+2 Functions of ﬁnite order 138
+3 Inﬁnite products 140
+3.1 Generalities 140
+3.2 Example: the product formula for the sine function 142
+4 Weierstrass inﬁnite products 145
+5 Hadamard’s factorization theorem 147
+6 Exercises153
+7 Problems 156
+Chapter 6. The Gamma and Zeta Functions 159
+1 The gamma function 160
+1.1 Analytic continuation 161
+1.2 Further properties of Γ 163
+2 The zeta function 168
+2.1 Functional equation and analytic continuation 168
+3 Exercises174
+4 Problems 179
+Chapter 7. The Zeta Function and Prime Number The-
+orem 181
+1 Zeros of the zeta function 182
+1.1 Estimates for 1 /ζ(s) 187
+2 Reduction to the functions ψandψ1 188
+2.1 Proof of the asymptotics for ψ1 194
+Note on interchanging double sums 197
+3 Exercises199ii 
+
+4 Problems 203
+Chapter 8. Conformal Mappings 205
+1 Conformal equivalence and examples 206
+1.1 The disc and upper half-plane 208
+1.2 Further examples 209
+1.3 The Dirichlet problem in a strip 212
+2 The Schwarz lemma; automorphisms of the disc and upper
+half-plane 218
+2.1 Automorphisms of the disc 219
+2.2 Automorphisms of the upper half-plane 221
+3 The Riemann mapping theorem 224
+3.1 Necessary conditions and statement of the theorem 224
+3.2 Montel’s theorem 225
+3.3 Proof of the Riemann mapping theorem 228
+4 Conformal mappings onto polygons 231
+4.1 Some examples 231
+4.2 The Schwarz-Christoﬀel integral 235
+4.3 Boundary behavior 238
+4.4 The mapping formula 241
+4.5 Return to elliptic integrals 245
+5 Exercises248
+6 Problems 254
+Chapter 9. An Introduction to Elliptic Functions 261
+1 Elliptic functions 262
+1.1 Liouville’s theorems 264
+1.2 The Weierstrass ℘function 266
+2 The modular character of elliptic functions and Eisenstein
+series 273
+2.1 Eisenstein series 273
+2.2 Eisenstein series and divisor functions 276
+3 Exercises278
+4 Problems 281
+Chapter 10. Applications of Theta Functions 283
+1 Product formula for the Jacobi theta function 284
+1.1 Further transformation laws 289
+2 Generating functions 293
+3 The theorems about sums of squares 296
+3.1 The two-squares theorem 297ii 
+3.2 The four-squares theorem 304
+4 Exercises309
+5 Problems 314
+Appendix A: Asymptotics 318
+1 Bessel functions 319
+2 Laplace’s method; Stirling’s formula 323
+3 The Airy function 328
+4 The partition function 334
+5 Problems 341
+Appendix B: Simple Connectivity and Jordan Curve
+Theorem 344
+1 Equivalent formulations of simple connectivity 345
+2 The Jordan curve theorem 351
+2.1 Proof of a general form of Cauchy’s theorem 361
+Notes and References 365
+Bibliography 369
+Symbol Glossary 373
+Index 375v 
