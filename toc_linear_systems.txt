@@ -5,7 +5,7 @@
 		7$1.2.2 Continuous Functions
 	8$1.3 Initial- Value Problems
 		9$1.3.1 Systems of First-Order Ordinary Differential Equations
-		10$1.3.2 Classiﬁcation of Systems of First-Order Ordinary Differential Equations
+		10$1.3.2 Classification of Systems of First-Order Ordinary Differential Equations
 		11$1.3.3 nth-Order Ordinary Differential Equations
 	13$1.4 Examples of Initial-Value Problems
 	17$1.5 Solutions of Initial-Value Problems: Existence, Continuation, Uniqueness, and Continuous Dependence on Parameters 

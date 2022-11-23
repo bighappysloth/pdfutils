@@ -22,6 +22,7 @@ subparser.required = True
 merge_parser = subparser.add_parser('merge')
 toc_parser = subparser.add_parser('toc')
 margin_parser = subparser.add_parser('margin')
+extract_parser = subparser.add_parser('extract')
 
 merge_parser.add_argument('-input', type=pathlib.Path, nargs='+', required=True, help='Input file path, required')
 merge_parser.add_argument('-output', type=str, nargs=1, required=False, help='Output file path (optional), default = first_input_file_M.pdf') #optional output argument
@@ -41,6 +42,9 @@ margin_parser.add_argument('-input', type=pathlib.Path, nargs='+', required=True
 margin_parser.add_argument('-margin_size', type=float, nargs=1, required=False, help='Absolute Horizontal Margin Size (optional), default = 180')
 margin_parser.add_argument('-z', type=float, nargs=1, required=False, help='z Factor (optional), default = 0.65')
 margin_parser.add_argument('-scale', type=float, nargs=1, required=False, help='Scaling Factor, resizes the pdf (optional), default = 0.25')
+
+#image extract parser arguments
+extract_parser.add_argument('-input','-i',type=pathlib.Path,nargs=1,required=True,help='Input file path, required')
 
 # TOC Parser Syntax
 # L1 lk
@@ -159,6 +163,18 @@ def tocManager(z,toc_structure):
 		with open(oname, "wb") as fp:
 		 	writer.write(fp)
 
+def extract_manager(z):
+	with open (z,'rb') as f:
+		reader = PdfReader(f)
+	
+		count = 0
+		for i in range(0,len(reader.pages)):
+			page = reader.pages[i]
+			for image_file_object in page.images:
+				im_name = z.parent.joinpath(str(str(z.stem)+'_PAGE'+str(i)+'_'+str(count) + '_' + image_file_object.name))
+				with open(im_name, "wb") as fp:
+					fp.write(image_file_object.data)
+					count += 1
 		
 
 
@@ -342,4 +358,6 @@ if __name__ == '__main__':
 		for x in args.input:
 			if str(x)[-4:]=='.pdf' and str(x)[-6:]!='_E.pdf':
 				marginManager(x,default_margin,default_sf,default_z)
+	elif args.command=='extract':
+		extract_manager(args.input[0])
 	print('Terminating Program...')
