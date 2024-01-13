@@ -137,7 +137,7 @@ def marginManager(path, margin, sf, z):
             h = float(page.mediabox.getHeight())
 
             print(
-                "\tpagenum: "
+                "\tpage_number: "
                 + str(i)
                 + " size: "
                 + str(w)
@@ -188,14 +188,18 @@ def mergeManager(list_of_files, output_name, add_blank_page_after_subfile, inher
 
 def printTocOutline(z):
     tab_spacing = "\t" * z["indent_level"]
-    print(tab_spacing + z["title"] + " --> " + str(z["pagenum"]) + "\n")
+    print(tab_spacing + z["title"] + " --> " + str(z["page_number"]) + "\n")
     if z.get("children"):
         for c in z["children"]:
             printTocOutline(c)
 
 
 def recursiveToc(z, parent, parent_outline, writer):
-    z_params = {"title": z["title"], "pagenum": z["pagenum"], "parent": parent_outline}
+    z_params = {
+        "title": z["title"],
+        "page_number": z["page_number"],
+        "parent": parent_outline,
+    }
     z_outline = writer.add_outline_item(**z_params)  # Top level
     if z.get("children"):
         for c in z["children"]:
@@ -211,13 +215,13 @@ def tocManager(z, toc_structure):
     oname = z[:-4] + str("_TOC") + z[-4:]
     print("tocManager outputting to :" + oname)
 
-    with open(z, "rb") as f:
+    with open(z, "rb") as input_file:
         writer = PdfWriter()
-        reader = PdfReader(f)
+        reader = PdfReader(input_file)
 
         print(
             "Number of Pages: "
-            + str(reader.numPages)
+            + str(len(reader.pages))
             + "\n"
             + "Outline: "
             + str(reader.outline)
@@ -228,21 +232,29 @@ def tocManager(z, toc_structure):
         if len(reader.outline) != 0:
             print("Outline Entry Keys: " + str(reader.outline[0].keys()))
 
-        # add all the magic pages
-        writer.clone_document_from_reader(reader)
+        # CLONE OLD DOCUMENT ---------------------------------------------------------------------------
+        # writer.clone_document_from_reader(reader)
+        merge_params = {
+            'position' : 0,
+            'fileobj' : input_file,
+            'import_outline' : True,
+		}
+        # writer.append(input_file, import_outline=False)
+        writer.merge(**merge_params)
+        
         # Now we can manipulate the table of contents.
-
         # writer.add_outline()
 
         # print('get_named_dest_root():' + str(writer.get_named_dest_root()))
 
         print("get_outline_root():" + str(writer.get_outline_root()))
-        outline_root = writer.get_outline_root()
+        # outline_root = writer.get_outline_root()
         for y in toc_structure:
             y_params = {
                 "title": y["title"],
-                "pagenum": y["pagenum"],
-                "parent": outline_root,
+                "page_number": y["page_number"],
+                # "parent": outline_root,
+                "parent": None,
             }
             y_outline = writer.add_outline_item(**y_params)  # Top level
             if y.get("children"):
@@ -295,16 +307,16 @@ if __name__ == "__main__":
                 lines[i][0] = lines[i][0].lstrip()
                 lines[i].append(temp_indent_level)
                 lines[i] = {
-                    "pagenum": int(lines[i][0]) + offset,
+                    "page_number": int(lines[i][0]) + offset,
                     "title": str(lines[i][1]),
                     "indent_level": int(lines[i][-1]),
                 }
 
-                # {'pagenum': 1, 'title': 'Chapter 1', 'indent_level': 0}
-                # {'pagenum': 4, 'title': 'Chapter 1.1', 'indent_level': 1}
-                # {'pagenum': 5, 'title': 'Chapter 1.2.1', 'indent_level': 2}
-                # {'pagenum': 7, 'title': 'Chapter 1.3', 'indent_level': 1}
-                # {'pagenum': 12, 'title': 'Chapter 2', 'indent_level': 0}
+                # {'page_number': 1, 'title': 'Chapter 1', 'indent_level': 0}
+                # {'page_number': 4, 'title': 'Chapter 1.1', 'indent_level': 1}
+                # {'page_number': 5, 'title': 'Chapter 1.2.1', 'indent_level': 2}
+                # {'page_number': 7, 'title': 'Chapter 1.3', 'indent_level': 1}
+                # {'page_number': 12, 'title': 'Chapter 2', 'indent_level': 0}
                 # print(lines[i])
 
             # Now we have a valid 'lines' list of dictionaries.
